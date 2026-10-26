@@ -1,4 +1,4 @@
-# src/pipeline/features.py	
+# src/pipeline/features.py
 """
 Stage 3: Feature Engineering.
 Derives new, model-useful features from the raw measurements.

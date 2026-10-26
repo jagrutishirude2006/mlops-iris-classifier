@@ -46,7 +46,7 @@ def run_random_search(data_path: str):
 
         search = RandomizedSearchCV(
             RandomForestClassifier(random_state=42),
-param_distributions=PARAM_DIST,
+            param_distributions=PARAM_DIST,
             n_iter=N_ITER,
             cv=5,
             scoring="f1_macro",
@@ -77,4 +77,3 @@ param_distributions=PARAM_DIST,
 
 if __name__ == "__main__":
     run_random_search("data/processed/iris_features.csv")
-

@@ -11,12 +11,12 @@ import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder
 from sklearn.metrics import (
- accuracy_score,
- precision_score,
- recall_score,
- f1_score,
- confusion_matrix,
- ConfusionMatrixDisplay
+    accuracy_score,
+    precision_score,
+    recall_score,
+    f1_score,
+    confusion_matrix,
+    ConfusionMatrixDisplay
 )
 from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import RandomForestClassifier
@@ -24,7 +24,7 @@ from sklearn.ensemble import RandomForestClassifier
 # 1. MLflow configuration
 # ---------------------------------------------------------
 mlflow.set_tracking_uri(
- os.getenv("MLFLOW_TRACKING_URI", "http://127.0.0.1:5000")
+    os.getenv("MLFLOW_TRACKING_URI", "http://127.0.0.1:5000")
 )
 mlflow.set_experiment("iris-classification-baseline")
 # ---------------------------------------------------------
@@ -39,13 +39,13 @@ print(df.columns.tolist())
 # 3. Define features and target
 # ---------------------------------------------------------
 FEATURE_COLS = [
- "sepal length (cm)",
- "sepal width (cm)",
- "petal length (cm)",
- "petal width (cm)",
- "sepal_area",
- "petal_area",
- "sepal_to_petal_length_ratio"
+    "sepal length (cm)",
+    "sepal width (cm)",
+    "petal length (cm)",
+    "petal width (cm)",
+    "sepal_area",
+    "petal_area",
+    "sepal_to_petal_length_ratio"
 ]
 TARGET_COL = "species"
 # ---------------------------------------------------------
@@ -61,30 +61,30 @@ y = label_encoder.fit_transform(df[TARGET_COL])
 # 5. Train-test split
 # ---------------------------------------------------------
 X_train, X_test, y_train, y_test = train_test_split(
- X,
- y,
- test_size=0.20,
- random_state=42,
- stratify=y
+    X,
+    y,
+    test_size=0.20,
+    random_state=42,
+    stratify=y
 )
 # ---------------------------------------------------------
 # 6. Define models
 # ---------------------------------------------------------
 models = {
- "logistic_regression": LogisticRegression(
- max_iter=200,
- C=1.0
- ),
- "random_forest_shallow": RandomForestClassifier(
- n_estimators=50,
- max_depth=3,
- random_state=42
- ),
- "random_forest_deep": RandomForestClassifier(
- n_estimators=200,
- max_depth=None,
- random_state=42
- )
+    "logistic_regression": LogisticRegression(
+        max_iter=200,
+        C=1.0
+    ),
+    "random_forest_shallow": RandomForestClassifier(
+        n_estimators=50,
+        max_depth=3,
+        random_state=42
+    ),
+    "random_forest_deep": RandomForestClassifier(
+        n_estimators=200,
+        max_depth=None,
+        random_state=42
+    )
 }
 # ---------------------------------------------------------
 # 7. Train and track each model
@@ -183,7 +183,7 @@ print("MODEL COMPARISON")
 print("=" * 60)
 print(results_df.to_string(index=False))
 best_model = results_df.loc[
- results_df["f1_macro"].idxmax()
+    results_df["f1_macro"].idxmax()
 ]
 print("\nBest model based on F1 score:")
 print(best_model)

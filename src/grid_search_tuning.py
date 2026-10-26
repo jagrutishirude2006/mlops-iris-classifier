@@ -67,15 +67,15 @@ def run_grid_search(data_path: str):
         results_df.to_csv("grid_search_all_candidates.csv", index=False)
         mlflow.log_artifact("grid_search_all_candidates.csv")
 
-        print(f"Grid Search evaluated" 
+        print(f"Grid Search evaluated"
               f"{total_combinations} combinations x 5 folds = "
               f"{total_combinations * 5} total fits"
-        )
+              )
 
         print(
             f"Best params: {grid.best_params_}"
         )
-        
+
         print(f"Best CV f1_macro: {grid.best_score_:.4f}")
         print(f"Test accuracy: {test_score:.4f}")
         return grid.best_score_, grid.best_params_
@@ -83,4 +83,3 @@ def run_grid_search(data_path: str):
 
 if __name__ == "__main__":
     run_grid_search("data/processed/iris_features.csv")
-
